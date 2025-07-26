@@ -1,0 +1,5 @@
+1.Create the environment 
+2.Install the cookiecutter which contains all related files for the project.
+3.After installing run the command cookiecutter -c v1 https://github.com/drivendata/cookiecutter-data-science
+4.Rename the src.models to src.model for to avoid naming conflicts...
+5.
