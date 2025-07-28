@@ -1,62 +1,20 @@
 import unittest
 import mlflow
-<<<<<<< Updated upstream
-import mlflow.pyfunc
-from mlflow.tracking import MlflowClient
-=======
 import os
 import pandas as pd
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import pickle
->>>>>>> Stashed changes
 
 class TestModelLoading(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-<<<<<<< Updated upstream
-        #  Set the MLflow tracking URI for DagsHub
-        mlflow.set_tracking_uri("https://dagshub.com/Roopendra-M/Capstone_Project/mlflow")
-=======
         dagshub_token = os.getenv("CAPSTONE_TEST")
         if not dagshub_token:
             raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
->>>>>>> Stashed changes
 
-        cls.model_name = "My_model"
-        cls.alias = "candidate"  # Or "production"
-        cls.client = MlflowClient()
+        os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+        os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
 
-<<<<<<< Updated upstream
-        try:
-            cls.model_uri = cls.get_model_uri_by_alias(cls.model_name, cls.alias)
-            cls.model = mlflow.pyfunc.load_model(cls.model_uri)
-        except Exception as e:
-            cls.model = None
-            print(f"WARNING: Failed to load model with alias '{cls.alias}': {e}")
-
-    @classmethod
-    def get_model_uri_by_alias(cls, model_name, alias):
-        try:
-            version = cls.client.get_model_version_by_alias(model_name, alias)
-            return f"models:/{model_name}/{version.version}"
-        except Exception as e:
-            raise RuntimeError(f"Error retrieving model URI for alias '{alias}': {e}")
-
-    def test_model_loading(self):
-        if self.model is None:
-            self.skipTest(f"Model with alias '{self.alias}' not available.")
-        self.assertIsNotNone(self.model, "Model failed to load.")
-
-    def test_model_prediction(self):
-        if self.model is None:
-            self.skipTest(f"Model with alias '{self.alias}' not available.")
-
-        sample_input = ["This is a great product!"]
-        prediction = self.model.predict(sample_input)
-
-        self.assertIsNotNone(prediction, "Model prediction returned None.")
-        self.assertGreater(len(prediction), 0, "Prediction is empty.")
-=======
         dagshub_url = "https://dagshub.com"
         repo_owner = "Roopendra-M"
         repo_name = "Capstone_Project"
@@ -108,7 +66,6 @@ class TestModelLoading(unittest.TestCase):
         self.assertGreaterEqual(recall, 0.40, "Recall should be at least 0.40")
         self.assertGreaterEqual(f1, 0.40, "F1 Score should be at least 0.40")
 
->>>>>>> Stashed changes
 
 if __name__ == "__main__":
     unittest.main()
