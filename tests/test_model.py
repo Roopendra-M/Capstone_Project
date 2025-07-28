@@ -1,13 +1,16 @@
 import unittest
+import mlflow
 import mlflow.pyfunc
 from mlflow.tracking import MlflowClient
-
 
 class TestModelLoading(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        #  Set the MLflow tracking URI for DagsHub
+        mlflow.set_tracking_uri("https://dagshub.com/Roopendra-M/Capstone_Project/mlflow")
+
         cls.model_name = "My_model"
-        cls.alias = "candidate"
+        cls.alias = "candidate"  # Or "production"
         cls.client = MlflowClient()
 
         try:
@@ -33,14 +36,12 @@ class TestModelLoading(unittest.TestCase):
     def test_model_prediction(self):
         if self.model is None:
             self.skipTest(f"Model with alias '{self.alias}' not available.")
-        
-        # Sample input depending on your pipeline (adjust if needed)
-        sample_input = ["I love this product!"]
+
+        sample_input = ["This is a great product!"]
         prediction = self.model.predict(sample_input)
 
         self.assertIsNotNone(prediction, "Model prediction returned None.")
-        self.assertTrue(len(prediction) > 0, "Prediction is empty.")
-
+        self.assertGreater(len(prediction), 0, "Prediction is empty.")
 
 if __name__ == "__main__":
     unittest.main()
