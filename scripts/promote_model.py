@@ -30,7 +30,7 @@ def promote_model():
     try:
         current_prod_version = client.get_model_version_by_alias(model_name, "production")
         client.delete_model_version_alias(model_name, "production", current_prod_version.version)
-        print(f"🗑️ Removed 'production' alias from version {current_prod_version.version}")
+        print(f" Removed 'production' alias from version {current_prod_version.version}")
     except mlflow.exceptions.RestException:
         print("ℹ No existing 'production' model to unassign.")
 

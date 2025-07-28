@@ -45,26 +45,34 @@ def load_model_info(file_path:str)->dict:
         logging.error("Unexpected error occured while loading the model information : %s",e)
         raise
 
-def register_model(model_name:str,model_info:dict)->None:
-    """Register the model to the mlflow model registery"""
+def register_model(model_name:str, model_info:dict) -> None:
+    """Register the model to the MLflow model registry and assign alias 'candidate'."""
     try:
-        model_url=f"runs:/{model_info['run_id']}/{model_info['model_path']}"
-        # Register the model
-        model_version=mlflow.register_model(model_url,model_name)
+        model_url = f"runs:/{model_info['run_id']}/{model_info['model_path']}"
+        model_version = mlflow.register_model(model_url, model_name)
 
-        # Transition the model to "Staging" stage
-        client=mlflow.tracking.MlflowClient()
+        client = mlflow.tracking.MlflowClient()
         client.transition_model_version_stage(
             name=model_name,
             version=model_version.version,
-            stage="staging",
+            stage="None",  # Since we're using alias, we can skip formal staging
             archive_existing_versions=True
         )
-        logging.info(f"Model {model_name} version {model_version.version} registered and transition to staging")
-        print(f"Model {model_name} version {model_version.version} transitioned to Staging.")
+
+        # Assign alias
+        client.set_registered_model_alias(
+            name=model_name,
+            version=model_version.version,
+            alias="candidate"
+        )
+
+        logging.info(f"Model {model_name} version {model_version.version} registered with alias 'candidate'")
+        print(f"Model {model_name} version {model_version.version} assigned alias 'candidate'.")
+
     except Exception as e:
-        logging.error("Error during model registation: %s",e)
+        logging.error("Error during model registration: %s", e)
         raise
+
 
 def main():
     try:
