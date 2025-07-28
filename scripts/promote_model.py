@@ -27,7 +27,7 @@ class TestModelLoading(unittest.TestCase):
         cls.client = MlflowClient()
 
         # Find the latest run for the given experiment name
-        experiment_name = "Default"
+        experiment_name = "my-dvc-pipeline"
         experiment = cls.client.get_experiment_by_name(experiment_name)
         if experiment is None:
             raise Exception(f"Experiment '{experiment_name}' not found.")
