@@ -1,6 +1,6 @@
-# 🚗 Vehicle Insurance Claim Prediction - MLOps Capstone Project
+🔍 Sentiment Analysis- MLOps Capstone Project
 
-A Machine Learning project designed to predict vehicle insurance claim likelihood using customer features. This end-to-end pipeline demonstrates MLOps capabilities like DVC, MLflow, Docker, Kubernetes (Minikube), GitHub Actions CI/CD, and Prometheus + Grafana monitoring.
+A Machine Learning project designed to analysis the sentiment usinf text. This end-to-end pipeline demonstrates MLOps capabilities like **DVC**, **MLflow**, **Docker**, **Kubernetes (Minikube)**, **GitHub Actions CI/CD**, and **Prometheus + Grafana** monitoring.
 
 ---
 
@@ -10,9 +10,10 @@ Predict whether a customer is likely to make a vehicle insurance claim in the ne
 
 ---
 
-## 🔍 Sentiment Analysis (Streamlit App Feature)
+## 🔍 Sentiment Analysis
 
-The project also includes a simple **Sentiment Analysis UI** using Streamlit for capturing and analyzing customer feedback. Text entered by users is classified into:
+The project also includes a simple **Sentiment Analysis UI** using Streamlit for capturing and analyzing customer feedback.  
+Text entered by users is classified into:
 - Positive
 - Negative
 - Neutral
@@ -49,7 +50,7 @@ Capstone_Project/
 
 Unit testing on push/PR
 
-Linting, formatting check
+Linting & formatting checks
 
 Auto data version check with DVC
 
@@ -92,8 +93,7 @@ dvc push
 🐳 Dockerization
 🔧 Build the Docker image
 
-<img width="1920" height="1080" alt="docker" src="https://github.com/user-attachments/assets/6a9376a2-6a01-4b2f-99d2-05bf1504fe6e" />
-
+![docker](https://github.com/user-attachments/assets/5cc0766e-9ecc-46c0-9a60-bf474f32f22c)
 
 
 bash
@@ -103,10 +103,9 @@ docker build -t roopendra/vehicle-insurance:latest .
 ☁️ Push to Docker Hub
 
 
-<img width="1920" height="1080" alt="Dockerhub" src="https://github.com/user-attachments/assets/6a2aa060-0822-4547-8c64-e138ede15083" />
+<img width="1920" height="1080" alt="Dockerhub" src="https://github.com/user-attachments/assets/c26fbf15-0164-448a-b144-469007f60883" />
 
-
-
+bash
 Copy
 Edit
 docker login
@@ -140,7 +139,6 @@ Edit
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm install monitoring prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
 🔧 Add custom scrape config (example)
-
 Edit prometheus-config.yaml:
 
 yaml
@@ -151,6 +149,7 @@ scrape_configs:
     static_configs:
       - targets: ['<minikube_ip>:<your_app_port>']
 Apply config:
+<img width="1920" height="1080" alt="prometheus" src="https://github.com/user-attachments/assets/0f594100-7a49-4339-be9f-8106a83177c7" />
 
 bash
 Copy
@@ -158,8 +157,6 @@ Edit
 kubectl apply -f prometheus-config.yaml
 📈 Access Dashboards
 
-
-<img width="1920" height="1080" alt="prometheus" src="https://github.com/user-attachments/assets/3c0ca0cd-003a-4e11-87e8-2d08a736eb45" />
 
 
 bash
@@ -169,9 +166,11 @@ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
 Visit: http://localhost:3000
 Login: admin / prom-operator
 
-<img width="1920" height="1080" alt="grafana" src="https://github.com/user-attachments/assets/1f0a72ed-87c3-4777-909b-670cb8e0bef1" />
+<img width="1920" height="1080" alt="grafana" src="https://github.com/user-attachments/assets/deecdbb6-ab10-48ee-9768-8872064aa3a9" />
+<img width="1920" height="1080" alt="grafana1" src="https://github.com/user-attachments/assets/271c1593-41a1-4b34-9f95-632a5f4455a6" />
 
-<img width="1920" height="1080" alt="grafana1" src="https://github.com/user-attachments/assets/64442a40-86a1-4d52-b0d7-378c6a4c3427" />
+
+
 
 👨‍💻 Author
 Roopendra R
