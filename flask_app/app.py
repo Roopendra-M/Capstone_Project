@@ -64,7 +64,7 @@ def normalize_text(text):
     return text
 
 
-dagshub_token = os.getenv("CAPSTONE_TEST")
+dagshub_token = "f2c4e7d42c8e31dea660124690739f4a75368c00"
 if not dagshub_token:
     raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
 
