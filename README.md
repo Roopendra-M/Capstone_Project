@@ -176,7 +176,32 @@ Login: admin / prom-operator
 Roopendra R
 B.Tech CSE, RGUKT RK Valley
 📫 Email: mardalaroopendra@gmail.com
-🌐 LinkedIn: linkedin.com/in/roopendra-r
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img width="1920" height="1080" alt="prometheus" src="https://github.com/user-attachments/assets/ec034a51-93c8-4cf2-b7cb-aaaea4db388f" />
+
+
+
+
+
+
+
+
+
+
 
 🏁 Conclusion
 This project demonstrates the practical implementation of a full ML lifecycle pipeline using modern DevOps tools. It combines machine learning, model reproducibility, cloud-native tools (K8s, Docker), and open-source observability.
