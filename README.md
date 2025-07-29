@@ -93,7 +93,7 @@ dvc push
 🐳 Dockerization
 🔧 Build the Docker image
 
-![docker](https://github.com/user-attachments/assets/5cc0766e-9ecc-46c0-9a60-bf474f32f22c)
+![docker](https://raw.githubusercontent.com/Roopendra-M/Capstone_Project/main/references/docker.png)
 
 
 bash
@@ -103,7 +103,7 @@ docker build -t roopendra/vehicle-insurance:latest .
 ☁️ Push to Docker Hub
 
 
-<img width="1920" height="1080" alt="Dockerhub" src="https://github.com/user-attachments/assets/c26fbf15-0164-448a-b144-469007f60883" />
+![docker hub](https://raw.githubusercontent.com/Roopendra-M/Capstone_Project/main/references/Dockerhub.png)
 
 bash
 Copy
@@ -149,8 +149,7 @@ scrape_configs:
     static_configs:
       - targets: ['<minikube_ip>:<your_app_port>']
 Apply config:
-<img width="1920" height="1080" alt="prometheus" src="https://github.com/user-attachments/assets/0f594100-7a49-4339-be9f-8106a83177c7" />
-
+![prometheus](https://raw.githubusercontent.com/Roopendra-M/Capstone_Project/main/references/prometheus.png)
 bash
 Copy
 Edit
@@ -166,8 +165,9 @@ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
 Visit: http://localhost:3000
 Login: admin / prom-operator
 
-<img width="1920" height="1080" alt="grafana" src="https://github.com/user-attachments/assets/deecdbb6-ab10-48ee-9768-8872064aa3a9" />
-<img width="1920" height="1080" alt="grafana1" src="https://github.com/user-attachments/assets/271c1593-41a1-4b34-9f95-632a5f4455a6" />
+![dashboard](https://raw.githubusercontent.com/Roopendra-M/Capstone_Project/main/references/grafana.png)
+![dashboard1](https://raw.githubusercontent.com/Roopendra-M/Capstone_Project/main/references/grafana1.png)
+
 
 
 
